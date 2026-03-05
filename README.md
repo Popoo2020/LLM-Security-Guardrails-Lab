@@ -1,34 +1,88 @@
-# LLM-Security-Guardrails-Lab
+# LLM‑Security‑Guardrails‑Lab
 
-## Overview
-This repository is a hands-on lab for exploring and implementing security guardrails for Large Language Model (LLM) applications. It provides frameworks and examples for defending against prompt injection, data exfiltration, retrieval poisoning, and other adversarial techniques targeting LLM-based systems.
+[![CI](https://github.com/your-org/LLM-Security-Guardrails-Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/LLM-Security-Guardrails-Lab/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+**LLM‑Security‑Guardrails‑Lab** is an experimental workspace for exploring
+security controls around large language model (LLM) integrations.  The
+project provides threat models, test harnesses and reference patterns to
+detect and mitigate attacks such as prompt injection, data exfiltration and
+retrieval poisoning.  It is intended for security engineers and researchers
+building LLM‑enabled applications who want to understand and measure
+defensive techniques.
 
 ## Features
-- **Prompt injection testing**: harness for automating adversarial prompts and evaluating whether guardrails block malicious instructions.
-- **Retrieval poisoning scenarios**: sample datasets and scripts that simulate poisoned knowledge bases in retrieval-augmented generation (RAG) architectures.
-- **Output filtering**: examples of post-processing filters for removing sensitive information, personally identifiable data, or harmful content from LLM outputs.
-- **Red-team prompts**: a curated set of benign and malicious prompts for defensive testing (for educational purposes only).
-- **Metrics & evaluation**: utilities to calculate pass/fail rates and measure the effectiveness of guardrails under different threat models.
 
-## Repository Structure
-- `examples/` – Jupyter notebooks and scripts demonstrating guardrail implementations.
-- `datasets/` – Sample data and poisoned corpora used for retrieval poisoning experiments.
-- `guardrails/` – Reusable functions and middleware for prompt validation, context sanitisation and output filtering.
-- `tests/` – Unit tests and evaluation harnesses for guardrail effectiveness.
-- `.github/workflows/` – CI workflows to run linting and unit tests.
+* **Comprehensive threat model** – The `docs/threat_model.md` file
+  enumerates assets, attackers and mitigations, serving as a starting point
+  for assessing your own applications.
+* **Attack surface analysis** – `docs/attack_surface.md` lists common
+  entry points (prompt input, retrieval sources, output channels) and
+  potential abuses.
+* **Test harness for prompt injection** – The `tests/test_prompt_injection.py`
+  module implements a minimal `sanitize_prompt` function and includes test
+  cases illustrating expected behaviour for malicious input.  Future
+  harnesses will cover retrieval poisoning and output filtering.
+* **Output filtering patterns** – Planned implementations will demonstrate
+  how to allow/deny certain categories of output and summarise untrusted
+  content safely.
+* **Eval rubric** – Future work will include a rubric for scoring guardrail
+  effectiveness across multiple scenarios.
 
-## Usage
-1. Clone this repository and install dependencies from `requirements.txt`.
-2. Explore `examples/` to see how to integrate guardrails into your LLM applications.
-3. Run `pytest` to execute the tests and view evaluation metrics.
-4. Use the red-team prompts under `tests/prompts/` to perform adversarial testing against your own models (do not use malicious prompts in production environments).
+## Quickstart
 
-## Contributing
-Contributions are encouraged! Please submit issues or pull requests with enhancements or new guardrail patterns. Ensure you follow the code style and provide unit tests where applicable.
+1. Clone the repository and create a virtual environment:
 
-## Disclaimer
-This project is intended for educational and defensive research purposes only. The maintainers do not condone the misuse of AI technologies or the distribution of malicious prompts beyond controlled testing environments.
+   ```bash
+   git clone https://github.com/your‑org/LLM‑Security‑Guardrails‑Lab.git
+   cd LLM‑Security‑Guardrails‑Lab
+   python -m venv .venv && source .venv/bin/activate
+   pip install -r requirements.txt  # if provided
+   ```
 
-## License
-Licensed under the Apache 2.0 License.
+2. Run the existing tests to familiarise yourself with the prompt injection
+   harness:
 
+   ```bash
+   pytest -q tests/test_prompt_injection.py
+   ```
+
+3. Review the threat model (`docs/threat_model.md`) and attack surface
+   (`docs/attack_surface.md`) to understand the security assumptions.
+
+4. Extend the `sanitize_prompt` function or add new test modules under
+   `tests/` to evaluate other guardrails such as output filtering or
+   retrieval poisoning detection.
+
+## Documentation
+
+The `docs/` directory contains several reference documents:
+
+* `threat_model.md` – High‑level threat analysis of LLM‑enabled services.
+* `attack_surface.md` – Breakdown of common entry points and potential
+  abuses.
+* `test_harness.md` – Instructions for running the provided test harness and
+  interpreting results.
+
+## Roadmap
+
+1. Expand the prompt injection harness with a broader set of attack
+   categories and detection techniques.
+2. Add retrieval poisoning scenarios and corresponding mitigations.
+3. Implement output filtering pipelines to redact sensitive information and
+   enforce allow/deny lists.
+4. Define an evaluation rubric to measure guardrail effectiveness and track
+   regression.
+5. Provide sample prompts, logs and test datasets to encourage reproducible
+   experiments.
+
+Please read `CONTRIBUTING.md` before submitting pull requests.
+
+## Known Limitations
+
+This lab is experimental.  The test harness currently targets only a very
+simple class of prompt injection attacks, and the `sanitize_prompt`
+function is rudimentary.  There are no implementations for retrieval
+poisoning tests, output filtering or an evaluation rubric.  Do not rely on
+these examples to secure production systems without further research and
+hardening.
