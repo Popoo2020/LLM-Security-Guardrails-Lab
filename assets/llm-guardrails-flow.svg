@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">LLM Guardrails Lab Flow</title>
+  <desc id="desc">Flow from prompt input through sanitisation and risk inspection to allow or block decisions with repeatable tests.</desc>
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <style>
+    .box { fill:#f8fafc; stroke:#1f2937; stroke-width:2; rx:18; }
+    .good { fill:#ecfdf5; stroke:#059669; stroke-width:2; rx:18; }
+    .bad { fill:#fef2f2; stroke:#dc2626; stroke-width:2; rx:18; }
+    .title { font: 700 26px Arial, sans-serif; fill:#111827; }
+    .label { font: 700 18px Arial, sans-serif; fill:#111827; }
+    .small { font: 15px Arial, sans-serif; fill:#374151; }
+    .arrow { stroke:#374151; stroke-width:3; fill:none; marker-end:url(#arrow); }
+    .note { fill:#eef6ff; stroke:#2563eb; stroke-width:2; rx:14; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#374151" />
+    </marker>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="title">LLM-Security-Guardrails-Lab — Testable Input Defense Baseline</text>
+
+  <rect x="60" y="130" width="190" height="100" class="box"/>
+  <text x="155" y="166" text-anchor="middle" class="label">Prompt input</text>
+  <text x="155" y="193" text-anchor="middle" class="small">Benign or malicious</text>
+
+  <rect x="300" y="130" width="210" height="100" class="box"/>
+  <text x="405" y="162" text-anchor="middle" class="label">Sanitisation</text>
+  <text x="405" y="188" text-anchor="middle" class="small">Redact simple secret</text>
+  <text x="405" y="209" text-anchor="middle" class="small">patterns</text>
+
+  <rect x="560" y="130" width="230" height="100" class="box"/>
+  <text x="675" y="162" text-anchor="middle" class="label">Risk inspection</text>
+  <text x="675" y="188" text-anchor="middle" class="small">Override · exfiltration</text>
+  <text x="675" y="209" text-anchor="middle" class="small">tool-abuse indicators</text>
+
+  <rect x="850" y="84" width="250" height="82" class="good"/>
+  <text x="975" y="118" text-anchor="middle" class="label">Allow path</text>
+  <text x="975" y="144" text-anchor="middle" class="small">No risk indicators</text>
+
+  <rect x="850" y="198" width="250" height="82" class="bad"/>
+  <text x="975" y="232" text-anchor="middle" class="label">Block / flag path</text>
+  <text x="975" y="258" text-anchor="middle" class="small">Reasons returned</text>
+
+  <path d="M250 180 H300" class="arrow"/>
+  <path d="M510 180 H560" class="arrow"/>
+  <path d="M790 166 C818 166, 820 125, 850 125" class="arrow"/>
+  <path d="M790 194 C818 194, 820 239, 850 239" class="arrow"/>
+
+  <rect x="260" y="308" width="680" height="60" class="note"/>
+  <text x="600" y="333" text-anchor="middle" class="label">Validation layer</text>
+  <text x="600" y="355" text-anchor="middle" class="small">Pytest harness covers redaction, benign prompts, instruction override and tool-abuse language</text>
+</svg>
