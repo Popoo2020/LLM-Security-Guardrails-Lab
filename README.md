@@ -8,6 +8,8 @@ It focuses on **prompt injection indicators**, **sensitive-value redaction**, an
 
 > **Status:** working educational/security lab — useful for demonstrations, portfolio review, and iterative hardening research.
 
+![LLM guardrails flow](assets/llm-guardrails-flow.svg)
+
 ## What is implemented
 
 | Capability | Status |
@@ -83,6 +85,15 @@ The current tests cover:
 - detection of instruction-override language
 - detection of tool-abuse language
 
+## Portfolio value
+
+This project demonstrates that I understand the difference between:
+
+- **security theatre** — vague claims about “guardrails”
+- **testable defensive engineering** — deterministic controls, explicit detection reasons, and validation through tests
+
+It is intentionally scoped as a baseline that can grow into a richer AI-security evaluation harness.
+
 ## Roadmap
 
 1. Add retrieval-poisoning test scenarios
@@ -90,6 +101,14 @@ The current tests cover:
 3. Introduce a small evaluation dataset with expected outcomes
 4. Add scoring metrics for false positives / false negatives
 5. Explore policy-based tool invocation constraints and safe RAG prompt assembly
+
+## Release readiness
+
+A sensible first tagged release would be **`v0.1.0`** once:
+
+- CI is confirmed passing on `main`
+- the test harness remains stable
+- README examples remain aligned with implemented behaviour
 
 ## Limitations
 
