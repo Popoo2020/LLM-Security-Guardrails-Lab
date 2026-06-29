@@ -1,6 +1,7 @@
 # LLM-Security-Guardrails-Lab
 
 [![CI](https://github.com/Popoo2020/LLM-Security-Guardrails-Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/Popoo2020/LLM-Security-Guardrails-Lab/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Popoo2020/LLM-Security-Guardrails-Lab/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Popoo2020/LLM-Security-Guardrails-Lab/actions/workflows/codeql-analysis.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **LLM-Security-Guardrails-Lab** is a small, testable AI-security lab for experimenting with deterministic guardrail patterns around LLM input handling.  
@@ -9,6 +10,12 @@ It focuses on **prompt injection indicators**, **sensitive-value redaction**, an
 > **Status:** working educational/security lab — useful for demonstrations, portfolio review, and iterative hardening research.
 
 ![LLM guardrails flow](assets/llm-guardrails-flow.svg)
+
+## Portfolio Assets
+
+- [Recruiter summary](docs/recruiter_summary.md)
+- [Test harness notes](test_harness.md)
+- [Guardrails flow diagram](assets/llm-guardrails-flow.svg)
 
 ## What is implemented
 
@@ -19,6 +26,7 @@ It focuses on **prompt injection indicators**, **sensitive-value redaction**, an
 | Prompt-risk inspection with explicit reasons | ✅ Implemented |
 | Deterministic test harness with pytest | ✅ Implemented |
 | CI that executes the test suite | ✅ Implemented |
+| CodeQL workflow | ✅ Implemented |
 | Retrieval-poisoning experiments | 🟡 Planned |
 | Output-filtering pipeline | 🟡 Planned |
 | Formal scoring/evaluation rubric | 🟡 Planned |
@@ -32,8 +40,15 @@ src/
 tests/
   test_prompt_injection.py   # Repeatable prompt-security tests
 
+docs/
+  recruiter_summary.md       # Short role-oriented review summary
+
+assets/
+  llm-guardrails-flow.svg    # Visual architecture/flow diagram
+
 requirements.txt             # Test dependencies
 .github/workflows/ci.yml      # CI test execution
+.github/workflows/codeql-analysis.yml # CodeQL analysis workflow
 ```
 
 ## Current guardrail capabilities
