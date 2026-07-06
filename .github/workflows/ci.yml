@@ -35,7 +35,7 @@ jobs:
 
       - name: Run test harness
         run: |
-          pytest -q tests
+          python -m pytest -q tests
 
       - name: Run Bandit SAST
         run: |
